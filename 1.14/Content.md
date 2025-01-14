@@ -46,6 +46,7 @@
     iraw, fraw, zraw, oraw = torch.unbind(raw.view(raw.shape[0], 4, -1), dim=1)
     # with torch.no_grad():  # THE difference to maxg aka max_gradient (here max / max_static)
     logfplusm = m + logsigmoid(fraw)
+    # 选择性更新稳定状态m
     if torch.all(n == 0.0):
         mnew = iraw
     else:
@@ -137,4 +138,12 @@
 [![pEiPRgA.jpg](https://s21.ax1x.com/2025/01/14/pEiPRgA.jpg)](https://imgse.com/i/pEiPRgA)
 1. **实验结果**
 ### 3.DAN代码运行结果
+使用SFC_with_rain数据集，预测"2021-12-16 00:30:00"之后的流量
+[![pEiEX7t.png](https://s21.ax1x.com/2025/01/14/pEiEX7t.png)](https://imgse.com/i/pEiEX7t)
+[![pEiVCcQ.png](https://s21.ax1x.com/2025/01/14/pEiVCcQ.png)](https://imgse.com/i/pEiVCcQ)
+[![pEiVVA0.png](https://s21.ax1x.com/2025/01/14/pEiVVA0.png)](https://imgse.com/i/pEiVVA0)
+### 4.下周计划
+   - [ ] Late格式修改
+   - [ ] xLSTM代码运行
+   - [ ] 看论文
 </font>
