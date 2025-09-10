@@ -3,10 +3,16 @@
 2. 看模型结构，运行数据集，修改Dataloader
 
 ### 1.代入Gold数据集
+
 **pre_len = 96:**
    ![alt text](image-4.png)
 **pre_len = 1:**
 [![pEwPGef.png](https://s21.ax1x.com/2025/03/19/pEwPGef.png)](https://imgse.com/i/pEwPGef)
+
+
+   ![alt text](image-4.png)
+
+
 ### 2.（2023 ICLR）TimesNet：Temporal 2D-Variation Modeling for General Time Series Analysis
 
 [![pEdBkDA.png](https://s21.ax1x.com/2025/03/18/pEdBkDA.png)](https://imgse.com/i/pEdBkDA)
@@ -46,5 +52,9 @@
 
 然后，作者又分析了token之间的相似度出发，对于每一层输出，计算token之间的两两相似度，可以得到相似度矩阵，有点类似于Attention Map。然后画出每层token的两两相似度值的直方图分布，如下图所示，横轴就是相似度，纵轴是成对token的数量。
 ![alt text](image-3.png)
+<<<<<<< HEAD
 如上图，可以看到，随机初始化的GPT的token相似度比较随意，而预训练的GPT，在较高的层数上，相似的token越来越多。这说明，可能所有token向量都被投影到了输入的低维特征向量空间中。为了验证这一想法，作者又将self-attention模块替换为PCA（主成分分析），发现算出的token相似度直方图和预训练的GPT得到的直方图很像。
+=======
+如上图，可以看到，随机初始化的GPT的token相似度比较随意，而预训练的GPT，在较高的层数上，相似的token越来越多。这说明，可能所有token向量都被投影到了输入的低维特征向量空间中。为了验证这一想法，作者又将self-attention模块替换为PCA（主成分分析），发现算出的token相似度直方图竟然和预训练的GPT得到的直方图很像。
+>>>>>>> 组会记录
 因此，从实验上来看，self-attention和PCA的作用可以说是有些相似，这就说明了预训练好的self-attention建模各种模态数据的通用性。
